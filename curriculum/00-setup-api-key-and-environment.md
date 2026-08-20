@@ -24,12 +24,15 @@ environment variable, without you ever typing the key into a script or the
 command line. On Windows, confirm which directory R treats as `~`.
 
 ```r
-# Run this in R/RStudio to find the file R actually reads:
+# Easiest: opens (or creates) .Renviron directly in your editor.
+usethis::edit_r_environ()
+
+# Or just confirm the path R actually reads, without opening it:
 Sys.getenv("HOME")
 file.path(path.expand("~"), ".Renviron")
 ```
 
-Open (or create) that exact file and add:
+In the file that opens, add:
 
 ```
 EMDC_API_KEY=your-real-key-here
@@ -64,8 +67,9 @@ git checkout daycent-runner-backends
 
 ## 4. R package dependencies
 
-The runner needs `httr`, `stringr`, and `here`, and (for parallel/dev-mode
-work) `pkgload` and `parallel`. If you're running from a source checkout rather
+The runner needs `httr`, `stringr`, `here`, and `usethis` (for the
+`.Renviron` shortcut above), plus (for parallel/dev-mode work) `pkgload` and
+`parallel`. If you're running from a source checkout rather
 than an installed copy, dev-load the package each session rather than
 `library(DDcentutils)`:
 
