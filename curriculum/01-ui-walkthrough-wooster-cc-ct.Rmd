@@ -1,4 +1,11 @@
-# 1. Running an example through the EMDC UI (wooster / cc_ct)
+---
+title: "1. Running an example through the EMDC UI (wooster / cc_ct)"
+output: html_document
+---
+
+```{r setup-01, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
 
 ## Goal
 
@@ -7,7 +14,7 @@ end: upload inputs, preflight, submit, watch status, download results.
 
 ## Prerequisites
 
-Completed `00-setup-api-key-and-environment.md`: you're logged into the EMDC
+Completed `00-setup-api-key-and-environment.Rmd`: you're logged into the EMDC
 UI with the same account whose API key you verified.
 
 ## Steps
@@ -62,5 +69,5 @@ UI with the same account whose API key you verified.
 Everything above corresponds 1:1 to a `submit_daycent_run()` /
 `runDayCent_api()` call with `dry_run = TRUE` then `dry_run = NULL` (step 4),
 `wait = TRUE`, and `download_daycent_results()` (step 5). See
-`02-batch-cli-r-script.md` for the equivalent scripted version of this exact
+`02-batch-cli-r-script.Rmd` for the equivalent scripted version of this exact
 same run.

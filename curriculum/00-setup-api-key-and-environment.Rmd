@@ -1,4 +1,11 @@
-# 0. Setup: API key and local environment (Windows)
+---
+title: "0. Setup: API key and local environment (Windows)"
+output: html_document
+---
+
+```{r setup-00, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
 
 Do this once on your machine before either the 01 UI walkthrough or the 02
 CLI/batch walkthrough.
@@ -23,7 +30,7 @@ R reads `~/.Renviron` at every session startup and turns each line into an
 environment variable, without you ever typing the key into a script or the
 command line. On Windows, confirm which directory R treats as `~`.
 
-```r
+```{r find-renviron}
 # Run this in R/RStudio to find the file R actually reads:
 Sys.getenv("HOME")
 file.path(path.expand("~"), ".Renviron")
@@ -46,7 +53,7 @@ EMDC_BACKEND_SERVER=https://api.emdc.eco
 Save the file, then start a **fresh** R session (R only reads `.Renviron` at
 startup) and verify:
 
-```r
+```{r verify-renviron}
 Sys.getenv("EMDC_API_KEY") != ""
 Sys.getenv("EMDC_BACKEND_SERVER")
 ```
@@ -69,7 +76,7 @@ work) `pkgload` and `parallel`. If you're running from a source checkout rather
 than an installed copy, dev-load the package each session rather than
 `library(DDcentutils)`:
 
-```r
+```{r pkgload-00}
 pkgload::load_all(".", quiet = TRUE)
 ```
 

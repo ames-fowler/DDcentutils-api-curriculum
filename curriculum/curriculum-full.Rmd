@@ -1,0 +1,27 @@
+---
+title: "DDcentutils API Curriculum"
+subtitle: "Setup, UI walkthrough, and batch CLI"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+    latex_engine: xelatex
+---
+
+```{r setup-full, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+```{r child-00, child = "00-setup-api-key-and-environment.Rmd", eval = TRUE}
+```
+
+\newpage
+
+```{r child-01, child = "01-ui-walkthrough-wooster-cc-ct.Rmd", eval = TRUE}
+```
+
+\newpage
+
+```{r child-02, child = "02-batch-cli-r-script.Rmd", eval = TRUE}
+```

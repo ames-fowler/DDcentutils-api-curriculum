@@ -1,14 +1,21 @@
-# 2. Running batches from an R script / CLI
+---
+title: "2. Running batches from an R script / CLI"
+output: html_document
+---
+
+```{r setup-02, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
 
 ## Setup
 
-```r
+```{r pkgload-02}
 pkgload::load_all(".", quiet = TRUE)   # dev checkout; use library(DDcentutils) if installed
 ```
 
 ## 1. One site/scenario, API backend
 
-```r
+```{r case-1}
 config <- daycent_runner_config(
   "api",
   base_url = "https://api.emdc.eco",
@@ -41,7 +48,7 @@ result$output_paths
 
 Useful for long-running batches you don't want to block a session on.
 
-```r
+```{r case-2-submit}
 config <- daycent_runner_config("api", model_name = "DayCent", model_version = "491")
 pairs <- c("wooster/cb_nt", "wooster/cb_ct", "wooster/cc_nt", "wooster/cc_ct",
            "pendleton/fw_fb_0n_blk6", "pendleton/fw_nb_45n_blk1")
@@ -55,7 +62,7 @@ parent_id <- submission$parent_run_id
 # persist parent_id somewhere (a plain text file is fine — it's not a secret)
 ```
 
-```r
+```{r case-2-resume}
 # Session 2 (can be a genuinely fresh R session):
 config <- daycent_runner_config("api", model_name = "DayCent", model_version = "491")
 result <- runDayCent_batch(
@@ -69,7 +76,7 @@ result$task_table
 Or let the server auto-discover every pair in the uploaded ZIP instead of
 listing them explicitly:
 
-```r
+```{r case-2-auto}
 runDayCent_batch(project_path = here::here(), backend = "api", config = config,
                   include = "*", run_eq = FALSE, wait = TRUE)
 ```
